@@ -58,19 +58,21 @@ class App extends Component {
       <div className="">
         <div className="container">
           <h2>Chats</h2>
-          {allChats.map(message => (
-            <Chatbox key={message.id} message={message} />
-          ))}
-          <div className="input-wrapper">
-            <input
-              value={this.state.content}
-              onChange={e => this.setState({ content: e.target.value })}
-              type="text"
-              placeholder="Start typing..."
-              onKeyPress={this.createChat}
-            />
+          <div className="chat-content-wrapper">
+            {allChats.map(message => (
+              <Chatbox key={message.id} message={message} />
+            ))}
           </div>
         </div>
+        <div className="input-wrapper">
+              <input
+                value={this.state.content}
+                onChange={e => this.setState({ content: e.target.value })}
+                type="text"
+                placeholder="Start typing..."
+                onKeyPress={this.createChat}
+              />
+          </div>
       </div>
     );
   }
