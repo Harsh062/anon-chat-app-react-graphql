@@ -7,11 +7,12 @@
     "apollo-link-ws": "^1.0.4",
     "graphql": "^0.12.3",
     "graphql-tag": "^2.6.1",
+    "moment": "^2.15.1",
     "react": "^16.3.2",
     "react-apollo": "^2.0.4",
     "react-dom": "^16.3.2",
+    "react-relay": "^1.6.0",
     "react-scripts": "1.1.4",
-    "moment": "^2.15.1",
     "subscriptions-transport-ws": "^0.9.4"
   },
   "scripts": {
@@ -19,5 +20,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "babel-plugin-relay": "^1.6.0",
+    "relay-compiler": "^1.6.0"
   }
 }
