@@ -1,0 +1,308 @@
+type Chat implements Node {
+  content: String!
+  createdAt: DateTime!
+  from: String!
+  id: ID!
+}
+
+# A connection to a list of items.
+type ChatConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # A list of edges.
+  edges: [ChatEdge]
+
+  # Count of filtered result set without considering pagination arguments
+  count: Int!
+}
+
+# An edge in a connection.
+type ChatEdge {
+  # The item at the end of the edge.
+  node: Chat!
+
+  # A cursor for use in pagination.
+  cursor: String!
+}
+
+input ChatFilter {
+  # Logical AND on all given filters.
+  AND: [ChatFilter!]
+
+  # Logical OR on all given filters.
+  OR: [ChatFilter!]
+  content: String
+
+  # All values that are not equal to given value.
+  content_not: String
+
+  # All values that are contained in given list.
+  content_in: [String!]
+
+  # All values that are not contained in given list.
+  content_not_in: [String!]
+
+  # All values less than the given value.
+  content_lt: String
+
+  # All values less than or equal the given value.
+  content_lte: String
+
+  # All values greater than the given value.
+  content_gt: String
+
+  # All values greater than or equal the given value.
+  content_gte: String
+
+  # All values containing the given string.
+  content_contains: String
+
+  # All values not containing the given string.
+  content_not_contains: String
+
+  # All values starting with the given string.
+  content_starts_with: String
+
+  # All values not starting with the given string.
+  content_not_starts_with: String
+
+  # All values ending with the given string.
+  content_ends_with: String
+
+  # All values not ending with the given string.
+  content_not_ends_with: String
+  createdAt: DateTime
+
+  # All values that are not equal to given value.
+  createdAt_not: DateTime
+
+  # All values that are contained in given list.
+  createdAt_in: [DateTime!]
+
+  # All values that are not contained in given list.
+  createdAt_not_in: [DateTime!]
+
+  # All values less than the given value.
+  createdAt_lt: DateTime
+
+  # All values less than or equal the given value.
+  createdAt_lte: DateTime
+
+  # All values greater than the given value.
+  createdAt_gt: DateTime
+
+  # All values greater than or equal the given value.
+  createdAt_gte: DateTime
+  from: String
+
+  # All values that are not equal to given value.
+  from_not: String
+
+  # All values that are contained in given list.
+  from_in: [String!]
+
+  # All values that are not contained in given list.
+  from_not_in: [String!]
+
+  # All values less than the given value.
+  from_lt: String
+
+  # All values less than or equal the given value.
+  from_lte: String
+
+  # All values greater than the given value.
+  from_gt: String
+
+  # All values greater than or equal the given value.
+  from_gte: String
+
+  # All values containing the given string.
+  from_contains: String
+
+  # All values not containing the given string.
+  from_not_contains: String
+
+  # All values starting with the given string.
+  from_starts_with: String
+
+  # All values not starting with the given string.
+  from_not_starts_with: String
+
+  # All values ending with the given string.
+  from_ends_with: String
+
+  # All values not ending with the given string.
+  from_not_ends_with: String
+  id: ID
+
+  # All values that are not equal to given value.
+  id_not: ID
+
+  # All values that are contained in given list.
+  id_in: [ID!]
+
+  # All values that are not contained in given list.
+  id_not_in: [ID!]
+
+  # All values less than the given value.
+  id_lt: ID
+
+  # All values less than or equal the given value.
+  id_lte: ID
+
+  # All values greater than the given value.
+  id_gt: ID
+
+  # All values greater than or equal the given value.
+  id_gte: ID
+
+  # All values containing the given string.
+  id_contains: ID
+
+  # All values not containing the given string.
+  id_not_contains: ID
+
+  # All values starting with the given string.
+  id_starts_with: ID
+
+  # All values not starting with the given string.
+  id_not_starts_with: ID
+
+  # All values ending with the given string.
+  id_ends_with: ID
+
+  # All values not ending with the given string.
+  id_not_ends_with: ID
+}
+
+enum ChatOrderBy {
+  content_ASC
+  content_DESC
+  createdAt_ASC
+  createdAt_DESC
+  from_ASC
+  from_DESC
+  id_ASC
+  id_DESC
+}
+
+input CreateChat {
+  content: String!
+  from: String!
+}
+
+input CreateChatInput {
+  content: String!
+  from: String!
+  clientMutationId: String!
+}
+
+type CreateChatPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  chat: Chat
+  edge: ChatEdge
+}
+
+scalar DateTime
+
+input DeleteChatInput {
+  id: ID!
+  clientMutationId: String!
+}
+
+type DeleteChatPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  chat: Chat
+  edge: ChatEdge
+  deletedId: ID
+}
+
+# HelloPayload
+type HelloPayload {
+  message: String!
+}
+
+type Mutation {
+  createChat(input: CreateChatInput!): CreateChatPayload
+  updateChat(input: UpdateChatInput!): UpdateChatPayload
+  updateOrCreateChat(input: UpdateOrCreateChatInput!): UpdateOrCreateChatPayload
+  deleteChat(input: DeleteChatInput!): DeleteChatPayload
+}
+
+# An object with an ID
+interface Node {
+  # The id of the object.
+  id: ID!
+}
+
+# Information about pagination in a connection.
+type PageInfo {
+  # When paginating forwards, are there more items?
+  hasNextPage: Boolean!
+
+  # When paginating backwards, are there more items?
+  hasPreviousPage: Boolean!
+
+  # When paginating backwards, the cursor to continue.
+  startCursor: String
+
+  # When paginating forwards, the cursor to continue.
+  endCursor: String
+}
+
+type Query {
+  viewer: Viewer!
+
+  # Fetches an object given its ID
+  node(
+    # The ID of an object
+    id: ID!
+  ): Node
+}
+
+input UpdateChat {
+  content: String
+  from: String
+  id: ID!
+}
+
+input UpdateChatInput {
+  content: String
+  from: String
+  id: ID!
+  clientMutationId: String!
+}
+
+type UpdateChatPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  chat: Chat
+  edge: ChatEdge
+}
+
+input UpdateOrCreateChatInput {
+  update: UpdateChat!
+  create: CreateChat!
+  clientMutationId: String!
+}
+
+type UpdateOrCreateChatPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  chat: Chat
+  edge: ChatEdge
+}
+
+# This is the famous Relay viewer object
+type Viewer {
+  allChats(filter: ChatFilter, orderBy: ChatOrderBy, skip: Int, after: String, before: String, first: Int, last: Int): ChatConnection!
+  Chat(id: ID): Chat
+
+  # hello
+  hello(name: String): HelloPayload
+  id: ID!
+}
+

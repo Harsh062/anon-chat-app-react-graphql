@@ -1,8 +1,13 @@
 import React from 'react';
 import moment from 'moment';
-import './Chatbox.css'
+import './Chatbox.css';
 
-const Chatbox = ({message}) => (
+import {
+  createFragmentContainer,
+  graphql
+} from 'react-relay';
+
+const Chat = ({message}) => (
   <div className="chat-box">
       <h5>{message.from}</h5>
       <div className="msg-wrapper">
@@ -16,4 +21,11 @@ const Chatbox = ({message}) => (
   </div>
 );
 
-export default Chatbox;
+export default createFragmentContainer(Chat, graphql`
+fragment Chat_message on Chat {
+  id
+  content
+  createdAt
+  from
+}
+`)
