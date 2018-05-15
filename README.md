@@ -2,14 +2,14 @@
 A simple anonymous chat application built using React and GraphQL. Node is used for dependency management.
 Front End folder Structure for the React App is generated via `create-react-app` cli.
 Graphcool has been used to develop serverless GraphQL backend.
-Apollo is used as an SDK for interacting with a GraphQL server.
+Relay is used for interacting with a GraphQL server.
 
 ## Libraries
 
   - Node.js / npm
   - React
   - GraphQL
-  - Apollo
+  - Relay
   - Graphcool
 
 ## Setup
