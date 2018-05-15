@@ -306,3 +306,26 @@ type Viewer {
   id: ID!
 }
 
+type Subscription {
+  Chat: ChatSubscriptionPayload
+}
+
+type ChatSubscriptionPayload {
+  mutation: _ModelMutationType!
+  node: Chat
+  updatedFields: [String!]
+  previousValues: ChatPreviousValues
+}
+
+enum _ModelMutationType {
+  CREATED
+}
+
+type ChatPreviousValues {
+  createdAt: DateTime!
+  id: ID!
+  updatedAt: DateTime!
+  from: String!
+  content: String!
+}
+

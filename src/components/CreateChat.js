@@ -33,7 +33,10 @@ class CreateChat extends Component {
   createChat = (e) => {
     if (e.key === 'Enter') {
     const { from, content } = this.state;
-    CreateChatMutation(from, content, () => console.log(`Mutation completed`))
+    CreateChatMutation(from, content, () => {
+        console.log(`Mutation completed`);
+        this.setState({content: ''});
+    })
     }
   }
 

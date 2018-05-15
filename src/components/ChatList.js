@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Chat from './Chat';
 import '../App.css';
+import NewChatSubscription from '../subscriptions/NewChatSubscription';
 
 import {
   createFragmentContainer,
@@ -8,6 +9,10 @@ import {
 } from 'react-relay';
 
 class ChatList extends Component {
+
+  componentDidMount() {
+    NewChatSubscription();
+  }
 
   render() {
     return (
